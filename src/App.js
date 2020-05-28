@@ -1,46 +1,44 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person.js';
 
-class App extends Component {
+const App = props => {
 
-  state = {
-    persons : [
-      {name : "saurabh", age : 24},
-      {name : "Shubham", age : 26},
-      {name : "Sunil", age : 45}
-    ],
-    otherState : "This will not be altered"
-  }
-
-  switchNameHandler = () => {
-    // DON'T DO THIS : this.state.persons[0].name = 'Maximilian';
-
-    this.setState({
+    const [personsState, setPersonsState] = useState({
       persons : [
-        {name : "Gaurabh", age : 23},
-        {name : "Shubham Kumar", age : 26},
-        {name : "Sunil Prasad", age : 46}
-      ]
+        {name : "saurabh", age : 24},
+        {name : "Shubham", age : 26},
+        {name : "Sunil", age : 45}
+      ],
+      otherState : "This will not be altered"
     });
-  }
 
-  render() {
+    const switchNameHandler = () => {
+      setPersonsState({
+        persons : [
+          {name : "Gaurabh", age : 23},
+          {name : "Shubham Kumar", age : 26},
+          {name : "Sunil Prasad", age : 46}
+        ]
+      });
+    }
+
+
     return (
       <div className="App">
         <header className="App-header">
           <h1>Welcome to React</h1>
-            <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
+            <Person name={personsState.persons[0].name} age={personsState.persons[0].age}/>
 
-            <Person name={this.state.persons[1].name} age={this.state.persons[1].age}> This is children under third person </Person>
+            <Person name={personsState.persons[1].name} age={personsState.persons[1].age}> This is children under third person </Person>
 
-            <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+            <Person name={personsState.persons[2].name} age={personsState.persons[2].age}/>
 
-            <button onClick={this.switchNameHandler}>Switch name</button>
+            <button onClick={switchNameHandler}>Switch name</button>
         </header>
       </div>
     );
-  }
-}
+
+};
 
 export default App;
