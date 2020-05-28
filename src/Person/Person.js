@@ -3,10 +3,12 @@ import React from 'react';
 const person = (props) => {
 
     return (
-        <p>
-            Hi {props.name}, your age is {props.age} years and fav number is {Math.floor(Math.random() * 20)}
-        </p>
-    )
+        <div>
+            <p> Hi {props.name}, your age is {props.age} years and fav number is {Math.floor(Math.random() * 20)} </p>
+            
+            <p>{props.childern} </p>
+        </div>
+    );
 };
 
 export default person;
