@@ -13,28 +13,6 @@ class App extends Component {
     showPersons: false
   }
 
-  switchNameHandler = () => {
-    this.setState( {
-        persons : [
-          {name : "Gaurabh", age : 23},
-          {name : "Shubham Kumar", age : 26},
-          {name : "Sunil Prasad", age : 46}
-        ]
-      });
-    }
-
-    nameChangeHandler = (event) => {
-      this.setState( {
-        persons : [
-          {name : "Gaurabh kumar", age : 23},
-          {name : "Kumar", age : 26},
-          {name : event.target.value, age : 46}
-        ]
-      });
-
-      console.log(event.target.value);
-    }
-
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState( { showPersons: !doesShow } );
@@ -54,11 +32,9 @@ class App extends Component {
     if ( this.state.showPersons ) {
       persons = (
         <div>
-          <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-
-          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={this.switchNameHandler}> This is children under third person </Person>
-
-          <Person name={this.state.persons[2].name} age={this.state.persons[2].age} changed={this.nameChangeHandler}/>
+          {this.state.persons.map(person => {
+            return <Person name={person.name} age={person.age} />
+          })}
         </div>
       );
     }
