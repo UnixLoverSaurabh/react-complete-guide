@@ -23,14 +23,16 @@ const App = props => {
       });
     }
 
-    const nameChangeHandler = () => {
+    const nameChangeHandler = (event) => {
       setPersonsState({
         persons : [
           {name : "Gaurabh kumar", age : 23},
           {name : "Kumar", age : 26},
-          {name : "Sunil", age : 46}
+          {name : event.target.value, age : 46}
         ]
       });
+
+      console.log(event.target.value);
     }
 
     return (
@@ -41,7 +43,7 @@ const App = props => {
 
             <Person name={personsState.persons[1].name} age={personsState.persons[1].age} click={nameChangeHandler}> This is children under third person </Person>
 
-            <Person name={personsState.persons[2].name} age={personsState.persons[2].age}/>
+            <Person name={personsState.persons[2].name} age={personsState.persons[2].age} changed={nameChangeHandler}/>
 
             <button onClick={switchNameHandler}>Switch name</button>
         </header>
