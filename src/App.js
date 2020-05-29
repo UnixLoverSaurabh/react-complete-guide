@@ -35,6 +35,14 @@ const App = props => {
       console.log(event.target.value);
     }
 
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
     return (
       <div className="App">
         <header className="App-header">
@@ -45,7 +53,7 @@ const App = props => {
 
             <Person name={personsState.persons[2].name} age={personsState.persons[2].age} changed={nameChangeHandler}/>
 
-            <button onClick={switchNameHandler}>Switch name</button>
+            <button style={style} onClick={switchNameHandler}>Switch name</button>
         </header>
       </div>
     );
